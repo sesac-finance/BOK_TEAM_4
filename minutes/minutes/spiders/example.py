@@ -21,6 +21,7 @@ class Minutes(scrapy.Spider):
             try:
                 item['file_url'] = response.xpath(f'//*[@id="content"]/div[3]/ul/li[{i}]/div/div[1]/div/div/ul/li[2]/a[1]/@href').extract()
                 item['date'] = response.xpath(f'//*[@id="content"]/div[3]/ul/li[{i}]/div/div[2]/div/span[1]/text()').extract()
+                item['file_url'] = 'https://www.bok.or.kr' + item['file_url'][0]
                 yield item
             except:
                 pass

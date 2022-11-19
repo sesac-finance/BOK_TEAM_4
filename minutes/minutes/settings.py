@@ -20,7 +20,7 @@ NEWSPIDER_MODULE = 'minutes.spiders'
 ROBOTSTXT_OBEY = False
 
 FEED_FORMAT = "csv"
-FEED_URI = "example.csv"
+FEED_URI = "minutes_file_list.csv"
 FEED_EXPORT_ENCODING = "utf-8-sig"
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
@@ -45,7 +45,7 @@ DOWNLOAD_DELAY = 0.2
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
 #}
-LOG_FILE = "example.log"
+LOG_FILE = "minutes_file.log"
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {

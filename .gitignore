@@ -1,2 +1,5 @@
 pdf_data/
 .DS_Store
+text_data/
+*.log
+*.csv

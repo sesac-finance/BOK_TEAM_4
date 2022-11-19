@@ -2,7 +2,7 @@ from requests import get
 import pandas as pd
 import numpy as np
 def read_file():
-    df = pd.read_csv('/Users/stillssi/Desktop/BOK_TEAM_4/minutes/example.csv')
+    df = pd.read_csv('/Users/stillssi/Desktop/BOK_TEAM_4/minutes/minutes_file_list.csv')
     return df['date'].tolist(), df['file_url'].tolist()
 
 

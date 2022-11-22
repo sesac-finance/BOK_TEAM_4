@@ -177,3 +177,12 @@ cython_debug/
 
 minutes/Data
 *.csv
+*.DS_Store
+
+# data 목록 무시
+PDF/
+TXT/
+organized_txt/
+eKoNLPy/
+txt_test/
+txt_test_organ/

@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,jupyternotebooks
 
+asdf
+
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
@@ -177,4 +179,4 @@ cython_debug/
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
 
 minutes/Data
-.csv
+*.csv

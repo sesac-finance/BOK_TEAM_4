@@ -16,6 +16,9 @@ LOG_LEVEL = 'ERROR'
 # Url 크롤링시 CSVPipeline 설정
 ITEM_PIPELINES = {'newscrawling.pipelines.CsvPipeline': 300, }
 
+# 본문 크롤링시 JSONPipeline 설정
+# ITEM_PIPELINES = {'newscrawling.pipelines.JSONPipeline': 300, }
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'newscrawling (+http://www.yourdomain.com)'
 
@@ -29,9 +32,16 @@ ROBOTSTXT_OBEY = False
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 DOWNLOAD_DELAY = 2
+
+# FEED_FORMAT = "csv"
+# FEED_URI = "naver_news.csv"
+
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
+
+# csv 저장시 순서 정렬
+# FEED_EXPORT_FIELDS=["url","press","title","date","article"]
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False

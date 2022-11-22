@@ -6,7 +6,7 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-from scrapy.exporters import CsvItemExporter
+from scrapy.exporters import JsonItemExporter, CsvItemExporter
 from scrapy.utils.project import get_project_settings
 SETTINGS = get_project_settings()
 from scrapy.exceptions import DropItem
@@ -19,7 +19,7 @@ class NewscrawlingPipeline:
 #CSV 파일로 저장하는 클래스
 class CsvPipeline(object):
     def __init__(self):
-        self.file = open("newsUrlCrawl.csv", 'wb')
+        self.file = open("newsCrawl.csv", 'wb')
         self.exporter = CsvItemExporter(self.file, encoding='utf-8')
         self.exporter.start_exporting()
  

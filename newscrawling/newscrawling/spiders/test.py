@@ -4,7 +4,7 @@ import csv
 from newscrawling.items import NewscrawlingItem
 
 class NewsUrlSpider(scrapy.Spider):
-    name = 'newsUrlCrawler'
+    name = 'test'
 
     def start_requests(self):
         #office_section_code={}&news_office_checked={}
@@ -30,28 +30,18 @@ class NewsUrlSpider(scrapy.Spider):
                             break
             
     def parse(self, response):
-        paths = [f'//*[@id="sp_nws{i}"]/div/div/div[1]/div[2]/a[2]/@href' for i in range(1,11)] # 4001
+        paths = [f'//*[@id="sp_nws{i}"]/div/div/div[1]/div[2]/a[2]/@href' for i in range(1,6)] # 11 -> 4001
         for path in paths:
-            try:
-                item = NewscrawlingItem()
-                item['url'] = response.xpath(path).extract()[0]
-                yield item
-
+            try:          
+                re_url = response.xpath(path).extract()[0]
+                print(re_url)
+                yield scrapy.Request(url=re_url, callback = self.re_parse)
             except:
                 pass
                 # time.sleep(5)
 
-class NewsSpider(scrapy.Spider):
-    name = "newsCrawler"
- 
-    def start_requests(self):
-        with open('newsUrlCrawl.csv') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                yield scrapy.Request(row['url'], self.parse)
-            
-
-    def parse(self, response):
+    def re_parse(self,response):
+        print('*'*100)
         item = NewscrawlingItem()
                                         
         item['press'] = response.xpath('//*[@id="contents"]/div[13]/div/a/em').extract()[0]
@@ -65,4 +55,3 @@ class NewsSpider(scrapy.Spider):
         # time.sleep(5)
  
         yield item
-

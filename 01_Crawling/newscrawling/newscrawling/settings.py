@@ -14,7 +14,7 @@ NEWSPIDER_MODULE = 'newscrawling.spiders'
 LOG_LEVEL = 'ERROR'
 
 # Url 크롤링시 CSVPipeline 설정
-ITEM_PIPELINES = {'newscrawling.pipelines.CsvPipeline': 300, }
+# ITEM_PIPELINES = {'newscrawling.pipelines.CsvPipeline': 300, }
 
 # 본문 크롤링시 JSONPipeline 설정
 # ITEM_PIPELINES = {'newscrawling.pipelines.JSONPipeline': 300, }

@@ -4,7 +4,7 @@ from newscrawling.items import NewscrawlingItem
 import random
 
 class NewsUrlSpider(scrapy.Spider):
-    name = 'yonhap_ifm' # scrapy crawl yonhap_ifm -o yonhap_ifm.csv -t .csv
+    name = 'yonhap_ifm' # scrapy crawl yonhap_ifm -o yonhap_ifm.csv
 
     def start_requests(self):
         #office_section_code={}&news_office_checked={}
@@ -45,8 +45,8 @@ class NewsUrlSpider(scrapy.Spider):
         item = NewscrawlingItem()
         try:
             item['date'] = response.css('.info-text li::text')[1].get().split()[1]
-            item['press'] = response.css('.dis-table-cell.user-logo img::attr(alt)').get() 
-            item['article'] = response.css('div#article-view-content-div p::text').getall()
+            item['press'] = response.css('.dis-table-cell img::attr(alt)').get() 
+            item['article'] = response.css('#article-view-content-div::text').getall()
         except:
             pass
         yield item

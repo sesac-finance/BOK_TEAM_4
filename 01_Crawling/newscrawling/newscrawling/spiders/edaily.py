@@ -4,7 +4,7 @@ from newscrawling.items import NewscrawlingItem
 import random
 
 class NewsUrlSpider(scrapy.Spider):
-    name = 'edaily'
+    name = 'edaily' # scrapy crawl edaily -o edaily.csv -t .csv
 
     def start_requests(self):
         #office_section_code={}&news_office_checked={}

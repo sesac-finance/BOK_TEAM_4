@@ -4,7 +4,7 @@ from newscrawling.items import NewscrawlingItem
 import random
 
 class NewsUrlSpider(scrapy.Spider):
-    name = 'edaily' # scrapy crawl edaily -o edaily.csv -t .csv
+    name = 'edaily' # scrapy crawl edaily -o edaily.csv
 
     def start_requests(self):
         #office_section_code={}&news_office_checked={}
@@ -38,7 +38,7 @@ class NewsUrlSpider(scrapy.Spider):
 
         paths=response.css('.list_news li')
         for path in paths:
-            url = path.css('.news_wrap api_ani_send > a::attr(href)').get()
+            url = path.css('.info_group > a::attr(href)')[1].get()
             yield scrapy.Request(url=url, callback = self.re_parse, headers={'User-Agent': random.choice(user_agents_list)})
 
     def re_parse(self,response):
@@ -46,7 +46,7 @@ class NewsUrlSpider(scrapy.Spider):
         try:
             item['date'] = response.css('.media_end_head_info_datestamp_time::text').get().split()[0]
             item['press'] = response.css('.media_end_head_top_logo img::attr(title)').get() 
-            item['article'] = response.css('div#newsct_article::text').getall()
+            item['article'] = response.css('#dic_area::text').getall()
         except:
             pass
         yield item

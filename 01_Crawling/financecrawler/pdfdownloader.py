@@ -4,8 +4,10 @@ import pandas as pd
 reports = pd.read_csv('naver_report.csv', encoding='utf-8-sig')
 titles = reports['title'].values
 urls = reports['file_url'].values
+dates = reports['date'].values
 
-for url, title in zip(urls[:10], titles[:10]):
+for url in urls:
     url = url.rstrip()
-    r = requests.get(url, allow_redirects=True)
-    open(f'./pdf/{title.rstrip()}.pdf', 'wb').write(r.content)
+    response = requests.get(url)
+    pdf_name = url[-17:-4]
+    open(f'./PDF/{pdf_name}.pdf', 'wb').write(response.content)

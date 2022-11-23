@@ -4,8 +4,7 @@ from tika import parser
 
 def extract_pdf_text():
     PDF_DIR = '/Users/stillssi/Desktop/BOK_TEAM_4/Data/pdf_data' #PDF 파일 경로
-    os.listdir(PDF_DIR)
-
+    
     file_list = os.listdir(PDF_DIR)
     for file in file_list:    
         pdf_path =  f"/Users/stillssi/Desktop/BOK_TEAM_4/Data/pdf_data/{file}" 

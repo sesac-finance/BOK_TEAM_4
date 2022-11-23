@@ -45,8 +45,8 @@ class NewsUrlSpider(scrapy.Spider):
         item = NewscrawlingItem()
         try:
             item['date'] = response.css('.info-text li::text')[1].get().split()[1]
-            item['press'] = response.css('.dis-table-cell.user-logo img::attr(alt)').get() 
-            item['article'] = response.css('div#article-view-content-div p::text').getall()
+            item['press'] = response.css('.dis-table-cell img::attr(alt)').get() 
+            item['article'] = response.css('#article-view-content-div::text').getall()
         except:
             pass
         yield item

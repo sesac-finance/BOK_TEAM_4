@@ -23,7 +23,7 @@ def base_rate_crawler() -> list:
         day = int(li.select('td')[1].text.split()[1].replace('일',''))
         base_rate = float(li.select('td')[2].text)
 
-        if year<= 2021 and year>=2011:
+        if year<= 2022 and year>=2011 or (year==2010 and month==11) :
             base_result.append([f'{year}.{month}.{day}', base_rate])
         else:
             pass

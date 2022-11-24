@@ -11,8 +11,8 @@ def organize_txt(txt_name):
         new_line = line.strip()
         if len(new_line) == 0: continue
         else:
-            text += (new_line + '\n')
-
+            text += (new_line + '')
+        
     f = open(f'/Users/jang-yunji/Desktop/프로젝트/BOK_TEAM_4/organized_txt/{txt_name}', 'w')
     f.write(text)
     f.close()

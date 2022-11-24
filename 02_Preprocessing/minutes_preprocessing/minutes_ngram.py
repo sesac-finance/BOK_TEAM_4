@@ -1,43 +1,43 @@
 import re
 import os
 from eKoNLPy.ekonlpy.sentiment import MPCK
-import itertools
-from eKoNLPy.ekonlpy.tag import MeCab
+import pandas as pd
 def minutes_ngram():
     '''
     의사록 5-gram 함수
     return: n-gram 개수
     '''
-    ngram_list = []
     mpck = MPCK()
-    mecab = MeCab()
     TXT_DIR = '//Users/stillssi/Desktop/minutes/Data/split_data/' #split text 파일 경로
+    label_data = pd.read_csv('/Users/stillssi/Desktop/BOK_TEAM_4/02_Preprocessing/minutes_preprocessing/base_rate_label.csv')
     file_list = os.listdir(TXT_DIR)
+    df = pd.DataFrame(columns=['date', 'ngrams', 'label'])
+    
     for file in file_list:
-        f = open(TXT_DIR+file,'r', encoding='utf-8')
-        
-        lines = f.readlines()
+        ngram_list = []
 
-        hangul = re.compile('[^ ㄱ-ㅣ가-힣]+')
-        text = []
-        
-        for l in lines:
-            result = hangul.sub('', l)
-            result = result.split(' ')
-            result_removed = [i for i in result if i != '']
-            text.append(result_removed)
-        
-        text = list(itertools.chain(*text))
-        resultt = ' '.join(text)   
+        try:
+            f = open(TXT_DIR+file,'r', encoding='utf-8')
+            lines = f.readlines()
 
-        tokens = mpck.tokenize(resultt)
-        
-        ngrams = mpck.ngramize(tokens)
-        
-        score = mpck.classify(tokens + ngrams, intensity_cutoff=1.3)
-        ngram_list_1 = list(itertools.chain(*ngram_list))
-        ngram_list_1 = list(set(ngram_list_1))
+            hangul = re.compile('[^ ㄱ-ㅣ가-힣]+')
+            
+            for l in lines:
+                result = hangul.sub('', l)
+                result = result.split(' ')
+                result_removed = [i for i in result if i != '']
+                
+                line = ' '.join(result_removed)
+                tokens = mpck.tokenize(line)
+                ngrams = mpck.ngramize(tokens)
+                ngram_list.append(ngrams)
+            df.loc[i] = [file,ngram_list,]
+            dates.append(data['date'].loc[i])
+            
+                
+        except:
+            pass
 
-    return len(ngram_list_1)
+    return ngram_list
 
 minutes_ngram()

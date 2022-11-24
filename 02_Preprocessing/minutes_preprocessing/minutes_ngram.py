@@ -32,7 +32,6 @@ def minutes_ngram():
 
         tokens = mpck.tokenize(resultt)
         
-        mpck.get_ngram(tokens=tokens, )
         ngrams = mpck.ngramize(tokens)
         
         score = mpck.classify(tokens + ngrams, intensity_cutoff=1.3)
